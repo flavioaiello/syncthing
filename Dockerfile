@@ -10,7 +10,11 @@ RUN set -ex;\
     apk update;\
     apk upgrade;\
     apk add --no-cache su-exec tini curl;\
-    rm -rf /var/cache/apk/*
+    rm -rf /var/cache/apk/*;\
+    echo "*** Add syncthing system account ***";\
+    addgroup -S syncthing;\
+    adduser -S -D -h /home/syncthing -s /bin/false -G syncthing -g "syncthing system account" syncthing;\
+    chown -R syncthing /home/syncthing
 
 # Syncthing
 RUN set -ex;\

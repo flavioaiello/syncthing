@@ -1,6 +1,6 @@
 FROM alpine:3.6
 
-ENV SYNCTHING_VERSION=0.14.19
+ENV SYNCTHING_VERSION=v0.14.41
 ENV STNOUPGRADE=TRUE
 
 # Add local files to image
@@ -16,8 +16,8 @@ RUN set -ex;\
 RUN set -ex;\
     echo "Installing Syncthing ${SYNCTHING_VERSION} ...";\
     mkdir /opt;\
-    curl -sSL --retry 1 https://github.com/syncthing/syncthing/releases/download/v${SYNCTHING_VERSION}/syncthing-linux-amd64-v${SYNCTHING_VERSION}.tar.gz | tar -C /opt -xvz;\
-    ln -s /opt/syncthing-linux-amd64-v${SYNCTHING_VERSION}/syncthing /usr/local/bin;\
+    curl -sSL --retry 1 https://github.com/syncthing/syncthing/releases/download/${SYNCTHING_VERSION}/syncthing-linux-amd64-${SYNCTHING_VERSION}.tar.gz | tar -C /opt -xvz;\
+    ln -s /opt/syncthing-linux-amd64-${SYNCTHING_VERSION}/syncthing /usr/local/bin;\
     chmod -R +x /usr/local/bin
 
 EXPOSE 8384 22000 21027/udp

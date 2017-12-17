@@ -6,4 +6,5 @@ if [[ ! -f ~/.config/syncthing/config.xml ]]; then
     sed -i -e "s#<globalAnnounceEnabled>true#<globalAnnounceEnabled>false#g" -e "s#<relaysEnabled>true#<relaysEnabled>false#g" ~/.config/syncthing/config.xml
 fi
 
-exec "$@"
+echo "*** Startup $0 suceeded now starting service using eval to expand CMD variables ***"
+exec $(eval echo "$@")
